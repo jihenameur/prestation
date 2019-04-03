@@ -1,12 +1,16 @@
 package com.gproconsulting.prestation.domain;
 
 import java.util.Collection;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -21,9 +25,17 @@ public class OffreService {
     private String ServiceName;
 	@Column(name = "text", length = 250, nullable = true)
     private String text;
+	public Set<Service> getServices() {
+		return Services;
+	}
+	public void setServices(Set<Service> services) {
+		Services = services;
+	}
+	@ManyToOne
+    @JoinColumn(name = "id") 
 	private User user;
-	@OneToMany(mappedBy="offreservice")
-	private Collection<Service>services;
+	 @OneToMany(mappedBy = "offre", cascade = CascadeType.ALL)
+     public Set<Service> Services ;
 	public OffreService(Long id, String serviceName, String text) {
 		super();
 		this.id = id;

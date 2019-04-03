@@ -1,13 +1,15 @@
 package com.gproconsulting.prestation.domain;
 
-import java.util.Collection;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.soap.Text;
@@ -24,11 +26,27 @@ public class Service {
 	    private String servicetitre;
 	 @Column(name = "discription", length = 50, nullable = true)
 	    private Text discription;
-		
-   // thabti mel ktiba dima
-    @OneToMany(mappedBy="demande")
-    private Set<Demande>demandes;
-    private OffreService offreservice;
+		@ManyToOne
+	    @JoinColumn(name = "id") 
+	    private User user ;
+        
+		@ManyToOne
+	    @JoinColumn(name = "id") 
+	    private OffreService offreservice; 
+		 @OneToMany(mappedBy = "service", cascade = CascadeType.ALL)
+	     public Set<Demande> demandes ;
+	public User getUser() {
+			return user;
+		}
+		public void setUser(User user) {
+			this.user = user;
+		}
+		public OffreService getOffreservice() {
+			return offreservice;
+		}
+		public void setOffreservice(OffreService offreservice) {
+			this.offreservice = offreservice;
+		}
 	public Service(Long id, String servicetitre, Text discription) {
 		super();
 		this.id = id;
@@ -55,11 +73,6 @@ public class Service {
 	}
 	
 	
-	public OffreService getOffreservice() {
-		return offreservice;
-	}
-	public void setOffreservice(OffreService offreservice) {
-		this.offreservice = offreservice;
-	}
+
 	
 }

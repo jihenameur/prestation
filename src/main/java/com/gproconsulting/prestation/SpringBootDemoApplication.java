@@ -10,9 +10,8 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan("com.gproconsulting.prestation")
 public class SpringBootDemoApplication {
 
-	//hedha class principale dima t5admi menah
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootDemoApplication.class, args);
+              SpringApplication.run(SpringBootDemoApplication.class, args);
     }
    
    

@@ -1,7 +1,9 @@
 package com.gproconsulting.prestation.domain;
 
 import java.util.Collection;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -40,6 +42,12 @@ public class User {
      private String role;
      
      
+     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+     public Set<Demande> demandes ;
+     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+     public Set<Reclamation> reclamations ;
+     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+     public Set<OffreService> offreservices ;
     public User(Long id, String userName, String userAdress, String userEmail, String userTel, String userImage,
 			String login, String password, String role) {
 		super();
@@ -92,6 +100,14 @@ public class User {
 
 	public void setUserAdress(String userAdress) {
 		this.userAdress = userAdress;
+	}
+
+	public Set<Demande> getDemandes() {
+		return demandes;
+	}
+
+	public void setDemandes(Set<Demande> demandes) {
+		this.demandes = demandes;
 	}
 
 	public String getUserEmail() {

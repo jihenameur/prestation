@@ -1,11 +1,16 @@
 package com.gproconsulting.prestation.domain;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,7 +22,13 @@ public class Demande {
 	private Long id;
 	 @Column(name = "text", nullable = true)
 	    private String text;
-	private User user;
+	
+	
+	@ManyToOne
+    @JoinColumn(name = "id") 
+    private User user ;
+	@ManyToOne
+    @JoinColumn(name = "id") 
 	private Service service;
 	public Demande(Long id, String text) {
 		super();
