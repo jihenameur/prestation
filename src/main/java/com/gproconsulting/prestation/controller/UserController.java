@@ -27,7 +27,7 @@ public class UserController {
 	
 	@GetMapping("/")
 	public String savePage(Model model) {
-		model.addAttribute("user", new User(null, null, null, null, null, null, null, null, null));
+		model.addAttribute("user", new User());
 		model.addAttribute("allUsers", (ArrayList<User>)UserServiceInterface.getAllUsers());
 		return "index";
 	}

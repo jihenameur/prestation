@@ -27,7 +27,7 @@ public class ServiceController {
 	
 	@GetMapping("/")
 	public String savePage(Model model) {
-		model.addAttribute("Service", new Service(null, null, null));
+		model.addAttribute("Service", new Service());
 		model.addAttribute("allServices", (ArrayList<Service>)ServiceServiceInterface .getAllService());
 		return "index";
 	}

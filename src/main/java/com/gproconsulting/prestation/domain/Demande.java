@@ -8,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -17,48 +15,36 @@ import javax.persistence.Table;
 @Table(name = "demande_service")
 public class Demande {
 	@Id
-	@Column(name="id")
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	 @Column(name = "text", nullable = true)
-	    private String text;
-	
-	
-	@ManyToOne
-    @JoinColumn(name = "id") 
-    private User user ;
-	@ManyToOne
-    @JoinColumn(name = "id") 
-	private Service service;
-	public Demande(Long id, String text) {
-		super();
-		this.id = id;
-		this.text = text;
-	}
+	@Column(name = "description", nullable = true)
+	private String description;
+	@OneToMany(mappedBy = "demande", cascade = CascadeType.ALL)
+	public Set<Service> services;
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getText() {
-		return text;
+
+	public String getDescription() {
+		return description;
 	}
-	public void setText(String text) {
-		this.text = text;
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
-	public User getUser() {
-		return user;
+
+	public Set<Service> getServices() {
+		return services;
 	}
-	public void setUser(User user) {
-		this.user = user;
+
+	public void setServices(Set<Service> services) {
+		this.services = services;
 	}
-	public Service getService() {
-		return service;
-	}
-	public void setService(Service service) {
-		this.service = service;
-	}
-	 
 
 }

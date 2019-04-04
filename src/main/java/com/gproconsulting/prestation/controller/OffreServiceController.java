@@ -27,7 +27,7 @@ public class OffreServiceController {
 	
 	@GetMapping("/")
 	public String savePage(Model model) {
-		model.addAttribute("offreservice", new OffreService(null, null, null));
+		model.addAttribute("offreservice", new OffreService());
 		model.addAttribute("allOffreServices", (ArrayList<OffreService>)OffreServiceServiceInterface.getAllOffreServices());
 		return "index";
 	}

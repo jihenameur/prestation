@@ -21,7 +21,7 @@ DemandeServiceInterface DemandeServiceInterface;
 	
 	@GetMapping("/")
 	public String savePage(Model model) {
-		model.addAttribute("user", new Demande(null, null));
+		model.addAttribute("user", new Demande());
 		model.addAttribute("allUsers", (ArrayList<Demande>)DemandeServiceInterface.getAllDemandes());
 		return "index";
 	}
