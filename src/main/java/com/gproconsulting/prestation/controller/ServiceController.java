@@ -26,7 +26,7 @@ public class ServiceController {
 	public Collection<Service> retrieveAllServices() {
 		return serviceInterface.getAllService() ;
 	}
-
+     
 	@GetMapping("/serviceById:{id}")
 	public Service retrouveService(@PathVariable long id) {
 		return  serviceInterface.findService(id);
