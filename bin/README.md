@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# prestation
-=======
 # HikariCP
 Run Project :
 `mvn clean install spring-boot:run`
@@ -14,4 +11,3 @@ Open Your Browser : http://localhost:8080/
 ![Edit Employee](img/edit.png "Edit Employee")
 
 ![Delete Employee](img/delete.png "Delete Employee")
->>>>>>> branch 'master' of https://github.com/jihenameur/prestation.git
