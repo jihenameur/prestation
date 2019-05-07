@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.gproconsulting.prestation.domain.Demande;
+import com.gproconsulting.prestation.domain.Service;
 import com.gproconsulting.prestation.service.DemandeServiceInterface;
 
 @RestController("demande")
@@ -25,6 +26,12 @@ public class DemandeController {
 	@GetMapping("/demandes")
 	public Collection<Demande> retrouveAllDemande(){
 		return demandeInterface.getAllDemandes();
+	}
+	@GetMapping("/demandeById:{id}")
+	public Demande retrouveDemande(@PathVariable long id) {
+		return  demandeInterface.findDemande(id);
+
+		
 	}
 	
 }
