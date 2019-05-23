@@ -21,7 +21,7 @@ public class OffreServiceController {
 	@Autowired
 	private OffreServiceServiceInterface offreInterface;
 	@GetMapping("/offres") 
-	public Collection<OffreService> retrieveAllOffreService(){
+	   public Collection<OffreService> retrieveAllOffreService(){
 		return offreInterface.getAllOffreServices();
 	
 }
