@@ -42,7 +42,6 @@ public class OffreServiceServiceImplementation implements OffreServiceServiceInt
 
 	@Override
 	public Collection<OffreService> getAllOffreServices() {
-		// TODO Auto-generated method stub
 		Iterable<OffreService> itr = OffreServiceRepository.findAll();
 		return (Collection<OffreService>)itr;
 	}

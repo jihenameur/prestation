@@ -13,10 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gproconsulting.prestation.domain.Reclamation;
-import com.gproconsulting.prestation.domain.Service;
 import com.gproconsulting.prestation.service.ReclamationServiceInterface;
 
-@RestController("reclamation")
+@RestController
 public class ReclamationController {
 	
 	@Autowired
@@ -25,4 +24,26 @@ public class ReclamationController {
 	public Collection<Reclamation> retrouveAllReclamation(){
 		return reclamationInterface.getAllReclamations();
 	}
+	
+	@GetMapping("/ReclamationById:{id}")
+	public Reclamation retrouveReclamation(@PathVariable long id) {
+		return  reclamationInterface.findReclamation(id);
+
+		
+	}
+	@DeleteMapping("/deleteReclamation:{id}")
+	public void deleteReclamation(@PathVariable long id) {
+		reclamationInterface.deleteReclamation(id);
+	}
+	@PostMapping("/saveReclamation")
+	public Reclamation createReclamation(@RequestBody Reclamation Reclamation) {
+		return  reclamationInterface.saveReclamation(Reclamation) ;
+
+	
+	}
+	@PutMapping("/updateReclamation")
+	public Reclamation updateReclamation(@RequestBody Reclamation Reclamation) {
+		return reclamationInterface.editReclamation(Reclamation);
+	}
+	
 }

@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.gproconsulting.prestation.domain.Provider;
+import com.gproconsulting.prestation.domain.Service;
 import com.gproconsulting.prestation.repository.ProviderRepository;
 @org.springframework.stereotype.Service
 
@@ -15,31 +16,36 @@ private ProviderRepository providerRepository;
 	@Override
 	public Provider saveProvider(Provider provider) {
 		// TODO Auto-generated method stub
-		return null;
+		return providerRepository.save(provider);
 	}
 
 	@Override
 	public Boolean deleteProvider(Long providerId) {
 		// TODO Auto-generated method stub
-		return null;
+		Provider Provider=providerRepository.findOne(providerId);
+		if(Provider!=null) {
+			providerRepository.delete(providerId);
+			return true;
+		}
+		return false;
 	}
 
 	@Override
 	public Provider editProvider(Provider provider) {
 		// TODO Auto-generated method stub
-		return null;
+		return providerRepository.save(provider);
 	}
 
 	@Override
 	public Provider findProvider(Long providerId) {
 		// TODO Auto-generated method stub
-		return null;
+		return providerRepository.findOne(providerId);
 	}
 
 	@Override
 	public Collection<Provider> getAllProviders() {
-		// TODO Auto-generated method stub
-		return null;
+		Iterable<Provider> itr = providerRepository.findAll();
+		return (Collection<Provider>)itr;
 	}
 
 	
