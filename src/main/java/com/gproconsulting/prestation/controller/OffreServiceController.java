@@ -20,8 +20,9 @@ import com.gproconsulting.prestation.service.OffreServiceServiceInterface;
 public class OffreServiceController {
 	@Autowired
 	private OffreServiceServiceInterface offreInterface;
-	@GetMapping("/offres") 
+       	@GetMapping("/offres") 
 	   public Collection<OffreService> retrieveAllOffreService(){
+       		
 		return offreInterface.getAllOffreServices();
 	
 }
