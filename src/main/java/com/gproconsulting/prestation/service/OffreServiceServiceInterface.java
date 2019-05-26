@@ -12,5 +12,6 @@ public interface OffreServiceServiceInterface {
 	public OffreService editOffreService(OffreService offreservice);
 	public OffreService findOffreService(Long offreserviceId);
 	public Collection<OffreService> getAllOffreServices();
+	public OffreService findOffreServiceByLibelle(String libelle);
 
 }

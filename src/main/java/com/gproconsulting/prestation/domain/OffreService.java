@@ -19,6 +19,8 @@ public class OffreService {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	@Column(name="libelle",length=50,nullable=false)
+	private String libelle;
 	@Column(name = "description", length = 50, nullable = true)
 	private String description;
 	@Column(name = "date_creation")
@@ -29,7 +31,7 @@ private Date DateDebut;
 private Date DateFin;
 	@Column(name = "prix")
 private Double prix;
-
+     
 	public Double getPrix() {
 		return prix;
 	}

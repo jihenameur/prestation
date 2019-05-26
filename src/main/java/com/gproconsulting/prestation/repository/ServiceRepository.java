@@ -9,7 +9,7 @@ import com.gproconsulting.prestation.domain.Service;
 
 public interface ServiceRepository extends CrudRepository<Service, Long>{
 
-	//public <List>Service findServiceByLibelle(String serviceLibelle) ;
+	public <List>Service findServiceByLibelle(String serviceLibelle) ;
 
 
 	}

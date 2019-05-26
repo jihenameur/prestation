@@ -44,4 +44,10 @@ public class CustomerServiceImplementation implements CustomerServiceInterface{
 		return (Collection<Customer>)itr;
 	}
 
+	@Override
+	public Customer findCustomerByLoginAndPassword(String login,String password) {
+		// TODO Auto-generated method stub
+		return customerRepository.findByLoginAndPassword(login, password);
+	}
+
 }

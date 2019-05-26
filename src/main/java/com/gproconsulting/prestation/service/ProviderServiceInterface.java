@@ -11,5 +11,5 @@ public interface ProviderServiceInterface {
 	public Provider editProvider(Provider provider);
 	public Provider findProvider(Long providerId);
 	public Collection<Provider> getAllProviders();
-
+   public Provider findProviderByLoginAndPassword(String login ,String password);
 }

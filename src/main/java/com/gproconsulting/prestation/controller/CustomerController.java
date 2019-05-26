@@ -40,4 +40,8 @@ public Customer createCustomer(@RequestBody Customer customer) {
 public Customer updateCustomer(@RequestBody Customer customer) {
 	return customerInterface.editCustomer(customer);
 }
+@GetMapping("/customerByLoginAndPassword:{login , password}")
+public Customer retrouverCustomer(@PathVariable String login,String password) {
+	return customerInterface.findCustomerByLoginAndPassword(login, password);
+}
 }
