@@ -52,6 +52,10 @@ public class ServiceController {
 		return serviceInterface.editService(Service);
 	}
 	
-	
+	@GetMapping("/serviceByLibelle")
+	public Service retrouverService(@RequestBody String libelle) {
+		return serviceInterface.findServiceByLibelle(libelle);
+		
+	}
 	
 }

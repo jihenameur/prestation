@@ -45,6 +45,14 @@ public class OffreServiceServiceImplementation implements OffreServiceServiceInt
 		Iterable<OffreService> itr = OffreServiceRepository.findAll();
 		return (Collection<OffreService>)itr;
 	}
+
+	@Override
+	public OffreService FindByLibelle(String libelle) {
+		// TODO Auto-generated method stub
+		return OffreServiceRepository.findByLibelle(libelle);
+	}
+
+	
 	
 
 }

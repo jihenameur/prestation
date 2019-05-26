@@ -27,7 +27,7 @@ public class OffreServiceController {
 	
 }
 	@GetMapping("/offreById:{id}")
-	public OffreService retrouveService(@PathVariable long id) {
+	public OffreService retrouveOffreService(@PathVariable long id) {
 		return  offreInterface.findOffreService(id);
 
 		
@@ -52,6 +52,8 @@ public class OffreServiceController {
 	}
 	
 	
-	
-
+	@GetMapping("/offreByLibelle:{libelle}")
+	public OffreService retrouveOffreService(@PathVariable String libelle) {
+       return offreInterface.FindByLibelle(libelle);
+       }
 }

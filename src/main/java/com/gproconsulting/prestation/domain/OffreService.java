@@ -19,12 +19,20 @@ public class OffreService {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@Column(name="libelle",length=50,nullable=false)
+	@Column(name="libelle",length=50,nullable=true)
 	private String libelle;
 	@Column(name = "description", length = 50, nullable = true)
 	private String description;
 	@Column(name = "date_creation")
  private Date DateCreation;
+	public String getLibelle() {
+		return libelle;
+	}
+
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
+	}
+
 	@Column(name = "date_debut")
 private Date DateDebut;
 	@Column(name = "date_fin")
