@@ -14,6 +14,18 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "administrator")
 public class Administrator  extends User  {
-    
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 
 }

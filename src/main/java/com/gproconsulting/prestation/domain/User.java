@@ -4,13 +4,15 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-@MappedSuperclass
+@Entity
+@Table(name = "user")
 public class User {
 
 	@Id
@@ -26,14 +28,19 @@ public class User {
 
 	@Column(name = "user_email", nullable = false)
 	private String userEmail;
+	
 	@Column(name = "user_tel1", nullable = false)
 	private String userTel1;
+	
 	@Column(name = "user_tel2", nullable = false)
 	private String userTel2;
+	
 	@Column(name = "user_fax", nullable = true)
 	private String userFax;
+	
 	@Column(name = "user_avatar")
 	private String userAvatar;
+	
 	@Column(name = "login")
 	private String login;
 
@@ -42,8 +49,20 @@ public class User {
 
 	@Column(name = "role")
 	private String role;
-	@Column(name = "user_etat", nullable = false)
-	private String userEtat;
+	
+	@Column(name = "user_etat")
+	private boolean userEtat;
+	
+
+ 	@OneToMany( cascade = CascadeType.ALL)
+ 	public Set<Demande> demande;
+
+	@OneToMany( cascade = CascadeType.ALL)
+	public Set<OffreService> offreservices;
+	
+	@OneToMany( cascade = CascadeType.ALL)
+	public Set<Service> services;
+
 	public Long getId() {
 		return id;
 	}
@@ -89,7 +108,7 @@ public class User {
 	}
 
 	public void setUserAvatar(String userAvatar) {
-		this.userAvatar= userAvatar;
+		this.userAvatar = userAvatar;
 	}
 
 	public String getLogin() {
@@ -112,11 +131,13 @@ public class User {
 		this.userFax = userFax;
 	}
 
-	public String getUserEtat() {
+	
+
+	public boolean isUserEtat() {
 		return userEtat;
 	}
 
-	public void setUserEtat(String userEtat) {
+	public void setUserEtat(boolean userEtat) {
 		this.userEtat = userEtat;
 	}
 
@@ -140,6 +161,28 @@ public class User {
 		this.role = role;
 	}
 
-	
+	public Set<Demande> getDemande() {
+		return demande;
+	}
+
+	public void setDemande(Set<Demande> demande) {
+		this.demande = demande;
+	}
+
+	public Set<OffreService> getOffreservices() {
+		return offreservices;
+	}
+
+	public void setOffreservices(Set<OffreService> offreservices) {
+		this.offreservices = offreservices;
+	}
+
+	public Set<Service> getServices() {
+		return services;
+	}
+
+	public void setServices(Set<Service> services) {
+		this.services = services;
+	}
 
 }

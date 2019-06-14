@@ -1,105 +1,29 @@
 package com.gproconsulting.prestation.domain;
 
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "provider")
 public class Provider extends User {
-	@Column(name = "formejuridique")
- 	private String FormeJuridique;
-	@Column(name = "note")
-	private Float Note;
-	@Column(name = "numcontrat")
-    private int NumContrat; 
-	@Column(name = "login")
-	private String login;
-
-	@Column(name = "password")
-	private String password;
-
-     public String getLogin() {
-		return login;
-	}
-
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-
-	public String getPassword() {
-		return password;
-	}
-
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-
-	public String getFormeJuridique() {
-		return FormeJuridique;
-	}
-
-
-	public void setFormeJuridique(String formeJuridique) {
-		FormeJuridique = formeJuridique;
-	}
-
-
-	public Float getNote() {
-		return Note;
-	}
-
-
-	public void setNote(Float note) {
-		Note = note;
-	}
-
-
-	public int getNumContrat() {
-		return NumContrat;
-	}
-
-
-	public void setNumContrat(int numContrat) {
-		NumContrat = numContrat;
-	}
-
-
-	@OneToMany( cascade = CascadeType.ALL)
-	public Set<Reclamation> reclamations;
 	
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-	@OneToMany( cascade = CascadeType.ALL)
-	public Set<OffreService> offreservices;
-
-
-	public Set<Reclamation> getReclamations() {
-		return reclamations;
+	public Long getId() {
+		return id;
 	}
 
-
-	public void setReclamations(Set<Reclamation> reclamations) {
-		this.reclamations = reclamations;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-
-	public Set<OffreService> getOffreservices() {
-		return offreservices;
-	}
-
-
-	public void setOffreservices(Set<OffreService> offreservices) {
-		this.offreservices = offreservices;
-	}
-	
 	
 	
 

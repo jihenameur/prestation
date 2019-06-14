@@ -48,6 +48,12 @@ private ProviderRepository providerRepository;
 		return (Collection<Provider>)itr;
 	}
 
+	@Override
+	public Provider findProviderByLoginAndPassword(String login, String password) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 	

@@ -6,10 +6,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.xml.soap.Text;
 
 @Entity
 @Table(name = "service")
@@ -19,20 +17,19 @@ public class Service {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@Column(name = "libelle", length = 50, nullable = false)
-	private String libelle;
-	@Column(name = "discription", length = 50, nullable = false)
+	
+	@Column(name = "title",  nullable = false)
+	private String title;
+	
+	@Column(name = "discription", nullable = false)
 	private String discription;
-	public String getRemarque() {
-		return remarque;
-	}
 
-	public void setRemarque(String remarque) {
-		this.remarque = remarque;
-	}
-
-	@Column(name = "remarque", length = 50, nullable = true)
+	@Column(name = "remarque",  nullable = true)
 	private String remarque;
+	
+	@Column(name = "image")
+	private String image;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Demande demande;
 
@@ -50,12 +47,20 @@ public class Service {
 		this.id = id;
 	}
 
-	public String getLibelle() {
-		return libelle;
+	public String getRemarque() {
+		return remarque;
 	}
 
-	public void setLibellé(String libelle) {
-		this.libelle = libelle;
+	public void setRemarque(String remarque) {
+		this.remarque = remarque;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getDiscription() {
@@ -90,6 +95,12 @@ public class Service {
 		this.domaine = domaine;
 	}
 
-	
-	
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 }

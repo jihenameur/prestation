@@ -49,7 +49,13 @@ public class OffreServiceServiceImplementation implements OffreServiceServiceInt
 	@Override
 	public OffreService FindByLibelle(String libelle) {
 		// TODO Auto-generated method stub
-		return OffreServiceRepository.findByLibelle(libelle);
+		return null ; //OffreServiceRepository.findByLibelle(libelle);
+	}
+
+	@Override
+	public OffreService findOffreServiceByLibelle(String libelle) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

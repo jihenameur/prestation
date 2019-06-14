@@ -10,5 +10,6 @@ public interface CustomerServiceInterface {
 	public Customer editCustomer(Customer customer);
 	public Customer findCustomer(Long customerId);
 	public Collection<Customer> getAllCustomers();
+	public Customer findCustomerByLoginAndPassword(String login, String password);
 
 }

@@ -14,12 +14,17 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "demande_service")
 public class Demande {
+	
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
+	
 	@Column(name = "description", nullable = true)
 	private String description;
+	
+	
 	@OneToMany(mappedBy = "demande", cascade = CascadeType.ALL)
 	public Set<Service> services;
 

@@ -5,6 +5,9 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -12,36 +15,19 @@ import javax.persistence.Table;
 @Table(name = "customer")
 public class Customer  extends User {
 
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-	
-
-
-	@OneToMany(cascade = CascadeType.ALL)
- 	public Set<Reclamation> reclamations;
- 	
-
- 	@OneToMany( cascade = CascadeType.ALL)
- 	public Set<Demande> demande;
-
-
-	public Set<Reclamation> getReclamations() {
-		return reclamations;
+	public Long getId() {
+		return id;
 	}
 
-
-	public void setReclamations(Set<Reclamation> reclamations) {
-		this.reclamations = reclamations;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-
-	public Set<Demande> getDemande() {
-		return demande;
-	}
-
-
-	public void setDemande(Set<Demande> demande) {
-		this.demande = demande;
-	}
 	
 
     

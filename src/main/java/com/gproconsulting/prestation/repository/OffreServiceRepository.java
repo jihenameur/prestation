@@ -6,6 +6,11 @@ import com.gproconsulting.prestation.domain.OffreService;
 
 
 public interface OffreServiceRepository extends CrudRepository<OffreService, Long>{
-	public <List>OffreService FindOffreServiceByLibelle(String OffreServicelibelle);
+	
+	
+	
+	//public <List>OffreService FindOffreServiceByLibelle(String offreServicelibelle);
+
+	
 }
 

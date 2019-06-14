@@ -15,37 +15,59 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "offre_service")
 public class OffreService {
+
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@Column(name="libelle",length=50,nullable=true)
-	private String libelle;
+
+	@Column(name = "title", length = 50, nullable = true)
+	private String title;
+
 	@Column(name = "description", length = 50, nullable = true)
 	private String description;
-	@Column(name = "date_creation")
- private Date DateCreation;
-	public String getLibelle() {
-		return libelle;
-	}
 
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
-	}
+	@Column(name = "date_creation")
+	private Date DateCreation;
 
 	@Column(name = "date_debut")
-private Date DateDebut;
+	private Date DateDebut;
+
 	@Column(name = "date_fin")
-private Date DateFin;
-	@Column(name = "prix")
-private Double prix;
-     
-	public Double getPrix() {
-		return prix;
+	private Date DateFin;
+
+	@Column(name = "price")
+	private Double price;
+
+	@Column(name = "image")
+	private String image;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+ 	public Set<Reclamation> reclamations;
+	
+
+	public Long getId() {
+		return id;
 	}
 
-	public void setPrix(Double prix) {
-		this.prix = prix;
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Date getDateCreation() {
@@ -72,31 +94,28 @@ private Double prix;
 		DateFin = dateFin;
 	}
 
-	@OneToMany(mappedBy = "offre", cascade = CascadeType.ALL)
-	public Set<Service> services;
-
-	public Long getId() {
-		return id;
+	public Double getPrice() {
+		return price;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setPrice(Double price) {
+		this.price = price;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getImage() {
+		return image;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setImage(String image) {
+		this.image = image;
 	}
 
-	public Set<Service> getServices() {
-		return services;
+	public Set<Reclamation> getReclamations() {
+		return reclamations;
 	}
 
-	public void setServices(Set<Service> services) {
-		this.services = services;
+	public void setReclamations(Set<Reclamation> reclamations) {
+		this.reclamations = reclamations;
 	}
 
 }
