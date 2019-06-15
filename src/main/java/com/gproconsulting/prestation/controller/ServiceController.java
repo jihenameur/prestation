@@ -1,8 +1,10 @@
 package com.gproconsulting.prestation.controller;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +18,7 @@ import com.gproconsulting.prestation.service.ServiceServiceInterface;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class ServiceController {
 	
 
@@ -27,7 +30,7 @@ public class ServiceController {
 		return serviceInterface.getAllService() ;
 	}
      
-	@GetMapping("/serviceById:{id}")
+	@GetMapping("/serviceById/{id}")
 	public Service retrouveService(@PathVariable long id) {
 		return  serviceInterface.findService(id);
 
@@ -55,6 +58,15 @@ public class ServiceController {
 	@GetMapping("/serviceByLibelle")
 	public Service retrouverService(@RequestBody String libelle) {
 		return serviceInterface.findServiceByLibelle(libelle);
+		
+	}
+	
+	
+    
+	@GetMapping("/serviceByUser/{id}")
+	public List<Service> getByUSer(@PathVariable("id") Long id) {
+		return  serviceInterface.findByUSer(id) ;
+
 		
 	}
 	

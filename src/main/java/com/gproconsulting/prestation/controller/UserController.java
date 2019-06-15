@@ -3,6 +3,7 @@ package com.gproconsulting.prestation.controller;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gproconsulting.prestation.domain.User;
 import com.gproconsulting.prestation.service.UserServiceInterface;
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
 @Autowired
 private UserServiceInterface userInterface;
@@ -44,8 +46,8 @@ public User createUser(@RequestBody User User) {
 public User updateUser(@RequestBody User User) {
 	return userInterface.editUser(User);
 }
-@GetMapping("/UserByLoginAndPassword:{login , password}")
-public User retrouverUser(@PathVariable String login,String password) {
-	return userInterface.findUserByLoginAndPassword(login, password);
+@PostMapping("/UserByLoginAndPassword")
+public User retrouverUser(@RequestBody User user) {
+	return userInterface.findUserByLoginAndPassword(user.getLogin(), user.getPassword());
 }
 }

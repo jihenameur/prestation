@@ -1,5 +1,6 @@
 package com.gproconsulting.prestation.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "service")
@@ -30,6 +33,9 @@ public class Service {
 	@Column(name = "image")
 	private String image;
 	
+	@Column(name = "price")
+	private String price;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Demande demande;
 
@@ -38,6 +44,10 @@ public class Service {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Domaine domaine;
+	
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	private User user;
 
 	public Long getId() {
 		return id;
@@ -101,6 +111,22 @@ public class Service {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

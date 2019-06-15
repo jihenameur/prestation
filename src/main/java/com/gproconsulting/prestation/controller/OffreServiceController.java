@@ -3,6 +3,7 @@ package com.gproconsulting.prestation.controller;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import com.gproconsulting.prestation.service.OffreServiceServiceInterface;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class OffreServiceController {
 	@Autowired
 	private OffreServiceServiceInterface offreInterface;

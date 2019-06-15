@@ -4,10 +4,10 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.gproconsulting.prestation.domain.OffreService;
 import com.gproconsulting.prestation.domain.Service;
-import com.gproconsulting.prestation.domain.User;
 import com.gproconsulting.prestation.repository.ServiceRepository;
+
+import antlr.collections.List;
 
 @org.springframework.stereotype.Service
 public class ServiceServiceImplementation implements ServiceServiceInterface {
@@ -55,6 +55,12 @@ public class ServiceServiceImplementation implements ServiceServiceInterface {
 		//Service service= ServiceRepository.findServiceByLibelle(libelle);
 		return null;
 	}
-   
+
+	@Override
+	public java.util.List<Service> findByUSer(Long user) {
+		return serviceRepository.findByUser(user);
+	}
+
+	
 
 }
