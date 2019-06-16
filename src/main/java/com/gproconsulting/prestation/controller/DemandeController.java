@@ -1,6 +1,7 @@
 package com.gproconsulting.prestation.controller;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,29 +21,44 @@ import com.gproconsulting.prestation.service.DemandeServiceInterface;
 public class DemandeController {
 	@Autowired
 	private DemandeServiceInterface demandeInterface;
+
 	@GetMapping("/demandes")
-	public Collection<Demande> retrouveAllDemande(){
+	public Collection<Demande> retrouveAllDemande() {
 		return demandeInterface.getAllDemandes();
 	}
+
 	@GetMapping("/demandeById:{id}")
 	public Demande retrouveDemande(@PathVariable long id) {
-		return  demandeInterface.findDemande(id);
+		return demandeInterface.findDemande(id);
 
-		
 	}
+
 	@DeleteMapping("/deleteDemande:{id}")
 	public void deleteDemande(@PathVariable long id) {
 		demandeInterface.deleteDemande(id);
 	}
+
 	@PostMapping("/saveDemande")
 	public Demande createDemande(@RequestBody Demande demande) {
-		return  demandeInterface.saveDemande(demande) ;
+		return demandeInterface.saveDemande(demande);
 
-	
 	}
+
 	@PutMapping("/updateDemande")
 	public Demande updateDemande(@RequestBody Demande demande) {
 		return demandeInterface.editDemande(demande);
 	}
-	
+
+	@GetMapping("/demandeByUser/{id}")
+	public List<Demande> getByUSer(@PathVariable("id") Long id) {
+		return demandeInterface.findByUSer(id);
+
+	}
+
+	@GetMapping("/demandeByService/{id}")
+	public List<Demande> getByService(@PathVariable("id") Long id) {
+		return demandeInterface.findByService(id);
+
+	}
+
 }

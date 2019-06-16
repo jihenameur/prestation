@@ -32,33 +32,34 @@ public class ServiceServiceImplementation implements ServiceServiceInterface {
 
 	@Override
 	public Service editService(Service service) {
-		// TODO Auto-generated method stub
 		return serviceRepository.save(service);
 	}
 
 	@Override
 	public Service findService(Long serviceId) {
-		// TODO Auto-generated method stub
 		return serviceRepository.findOne(serviceId);
 	}
 
 	@Override
 	public Collection<Service> getAllService() {
-		// TODO Auto-generated method stub
 		Iterable<Service> itr = serviceRepository.findAll();
 		return (Collection<Service>)itr;
 	}
 
 	@Override
 	public Service findServiceByLibelle(String libelle) {
-		// TODO Auto-generated method stub
-		//Service service= ServiceRepository.findServiceByLibelle(libelle);
-		return null;
+		return new Service();
 	}
 
 	@Override
 	public java.util.List<Service> findByUSer(Long user) {
-		return serviceRepository.findByUser(user);
+		try {
+			return serviceRepository.findByUser(user);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null ;
+		}
 	}
 
 	

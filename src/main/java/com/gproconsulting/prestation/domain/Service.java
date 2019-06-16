@@ -1,5 +1,7 @@
 package com.gproconsulting.prestation.domain;
 
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -20,32 +23,32 @@ public class Service {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
-	@Column(name = "title",  nullable = false)
+
+	@Column(name = "title", nullable = false)
 	private String title;
-	
+
 	@Column(name = "discription", nullable = false)
 	private String discription;
 
-	@Column(name = "remarque",  nullable = true)
+	@Column(name = "remarque", nullable = true)
 	private String remarque;
-	
+
 	@Column(name = "image")
 	private String image;
-	
+
 	@Column(name = "price")
 	private String price;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Demande demande;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	private OffreService offre;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonIgnore 
+	public Set<Demande> demande;
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	public Set<OffreService> offreService;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Domaine domaine;
-	
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	private User user;
 
@@ -81,38 +84,6 @@ public class Service {
 		this.discription = discription;
 	}
 
-	public Demande getDemande() {
-		return demande;
-	}
-
-	public void setDemande(Demande demande) {
-		this.demande = demande;
-	}
-
-	public OffreService getOffre() {
-		return offre;
-	}
-
-	public void setOffre(OffreService offre) {
-		this.offre = offre;
-	}
-
-	public Domaine getDomaine() {
-		return domaine;
-	}
-
-	public void setDomaine(Domaine domaine) {
-		this.domaine = domaine;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
-
 	public String getPrice() {
 		return price;
 	}
@@ -127,6 +98,38 @@ public class Service {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public Set<Demande> getDemande() {
+		return demande;
+	}
+
+	public void setDemande(Set<Demande> demande) {
+		this.demande = demande;
+	}
+
+	public Set<OffreService> getOffreService() {
+		return offreService;
+	}
+
+	public void setOffreService(Set<OffreService> offreService) {
+		this.offreService = offreService;
+	}
+
+	public Domaine getDomaine() {
+		return domaine;
+	}
+
+	public void setDomaine(Domaine domaine) {
+		this.domaine = domaine;
 	}
 
 }

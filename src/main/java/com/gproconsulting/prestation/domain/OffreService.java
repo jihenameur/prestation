@@ -6,9 +6,11 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -45,7 +47,14 @@ public class OffreService {
 	@OneToMany(cascade = CascadeType.ALL)
  	public Set<Reclamation> reclamations;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	private User user;
+	
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Service service;
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -116,6 +125,22 @@ public class OffreService {
 
 	public void setReclamations(Set<Reclamation> reclamations) {
 		this.reclamations = reclamations;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Service getService() {
+		return service;
+	}
+
+	public void setService(Service service) {
+		this.service = service;
 	}
 
 }

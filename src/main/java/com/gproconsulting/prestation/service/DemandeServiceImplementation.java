@@ -1,6 +1,7 @@
 package com.gproconsulting.prestation.service;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -45,6 +46,16 @@ private DemandeRepository demandeRepository;
 		// TODO Auto-generated method stub
 		Iterable<Demande> itr = demandeRepository.findAll();
 		return (Collection<Demande>)itr;
+	}
+
+	@Override
+	public List<Demande> findByUSer(Long id) {
+		return demandeRepository.findByUser(id);
+	}
+
+	@Override
+	public List<Demande> findByService(Long id) {
+		return demandeRepository.findByService(id);
 	}
 
 }

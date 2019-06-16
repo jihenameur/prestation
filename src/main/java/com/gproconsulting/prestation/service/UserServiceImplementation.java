@@ -34,19 +34,35 @@ public class UserServiceImplementation implements UserServiceInterface{
 
 	@Override
 	public User findUser(Long UserId) {
-		// TODO Auto-generated method stub
-		return userRepository.findOne(UserId);
+		try {
+			return userRepository.findOne(UserId);
+
+		} catch (Exception e) {
+			return new User() ;
+		}
 	}
 
 	@Override
 	public Collection<User> getAllUsers() {
-		Iterable<User> itr = userRepository.findAll();
-		return (Collection<User>)itr;
+		try {
+			Iterable<User> itr = userRepository.findAll();
+			return (Collection<User>)itr;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null ;
+		}
+		
 	}
 
 	@Override
 	public User findUserByLoginAndPassword(String login,String password) {
-		return userRepository.findByLoginAndPassword(login, password);
+		try {
+			return userRepository.findByLoginAndPassword(login, password);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new User() ;
+		}
+		
 	}
 
 }
